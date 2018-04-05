@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="scripts/form.js"></script>
+<link rel="stylesheet" type="text/css" href="formstyle.css">
+</head>
+<body>
+	<p class="yo">
+	<form id="myform" action="" Method="POST">
+		<fieldset>
+		<legend>Renseigner les differents champs</legend>
+			Nom: <input name="name" id="name" required/><br> 
+			Prenom: <input name="firstName" id="firstName" /><br> 
+			Email: <input type="email" name="email" id="email" /><br> 
+			Mot De Passe: <input  type="password"  name="mDP" id="mDP" pattern=".{8,}"  title="8 characters minimum" required/><br>
+			Valider mot de passe: <input type="password" name="mDPV" id="mDPV" pattern=".{8,}" oninput="check(this)" title="8 characters minimum" required/><br>
+		</fieldset>
+
+		<button type="submit">Submit</button>
+
+	</form>
+
+
+
+
+	</p>
+
+	<a href="index.html">retour </a>
+</body>
+</html>

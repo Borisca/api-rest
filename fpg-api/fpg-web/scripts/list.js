@@ -8,14 +8,17 @@ $(document).ready(function() {
         crossDomain: true,
 	    dataType: 'jsonp'
     }).then(function(data) {
+    	 var tr;
     	
     	$.each(data, function(i, item) {
     		console.log(item);
-    		$('.greeting-content').append("<br>");
-    		$('.greeting-content').append(item.id+" ");
-    		$('.greeting-content').append(item.name+" ");
-    		$('.greeting-content').append(item.age);
-    		$('.greeting-content').append("<br>");
+    		tr = $('<tr/>');
+    		tr.append("<td>" + item.id + "</td>");
+    		tr.append("<td>" + item.firstName + "</td>");
+    		tr.append("<td>" + item.name + "</td>");
+    		tr.append("<td>" + item.email + "</td>");
+    		$('table').append(tr);
+
         });
       
     });

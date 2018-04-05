@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 
 import com.sun.istack.internal.NotNull;
@@ -15,13 +17,36 @@ public class User {
 	@NotEmpty
     private String name;
 
+	private String firstName;
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
     
-    private int age;
+    private String email;
     
-    public long getId() {
+
+
+    private String motDePasse;
+    
+    
+    
+    public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getMotDePasse() {
+		return motDePasse;
+	}
+
+	public void setMotDePasse(String motDePasse) {
+		this.motDePasse = motDePasse;
+	}
+
+	public long getId() {
  		return id;
 	}
 
@@ -37,12 +62,22 @@ public class User {
         return this.name;
     }
 
-	public int getAge() {
-		return age;
+
+
+	
+	@Override
+	public String toString() {
+		return "User [name=" + name + ", firstName=" + firstName + ", id=" + id + ", email=" + email + ", motDePasse="
+				+ motDePasse + "]";
 	}
 
-	public void setAge(int age) {
-		this.age = age;
+	public String getEmail() {
+		return email;
 	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
     
 }

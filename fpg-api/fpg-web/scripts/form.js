@@ -12,7 +12,10 @@ $(document).ready(function() {
         var formData = {
         	'id' : 0,
             'name' : $('#name').val(), //$('input[name=name]').val(),
-            'age'  : $('#age').val() //$('input[name=email]').val()
+            'firstName':$('#firstName').val(),
+            'email'  : $('#email').val(),
+            'mDP'  : $('#mDP').val(),
+            'mDPV'  : $('#mDPV').val()//$('input[name=email]').val()
         };
 
         // process the form
@@ -35,6 +38,16 @@ $(document).ready(function() {
 
         // stop the form from submitting the normal way and refreshing the page
         event.preventDefault();
+
     });
 
 });
+
+function check(input) {
+    if (input.value != document.getElementById('mDP').value) {
+        input.setCustomValidity('Password Must be Matching.');
+    } else {
+        // input is valid -- reset the error message
+        input.setCustomValidity('');
+    }
+}

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
 <title>fpg-web</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="scripts/hello.js"></script>
+<script src="scripts/list.js"></script>
+<link rel="stylesheet" type="text/css" href="formstyle.css">
 </head>
 
 <body>
@@ -14,12 +16,32 @@
 				Recherche par ID <input type="number">
 			</form>
 		</div>
+		<div class="tableBouton">
+			<button class="boutonAdd" onclick="location='form.html';">Add</button>
+			<div class="table-responsive">
+				<table class="table table-striped table-sm">
+					<caption>Users</caption>
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nom</th>
+							<th>Prenom</th>
+							<th>Email</th>
+						</tr>
+					</thead>
+
+
+				</table>
+			</div>
+		</div>
 		<div>
-			<a href="Form.html">vers update</a>
+			<a href="form.html">vers update</a>
 		</div>
 	</div>
 	<div>
 		<p class="greeting-content"></p>
 	</div>
+	
+	
 </body>
 </html>

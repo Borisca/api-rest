@@ -24,4 +24,6 @@ public class GlobalControllerExceptionHandler {
 	public ResponseEntity<ErrorMessage> handleConflictUEE(UserExistException e) {
 		 return new ResponseEntity<ErrorMessage>(new ErrorMessage("user exist"), HttpStatus.CONFLICT);
 	}
+	
+
 }

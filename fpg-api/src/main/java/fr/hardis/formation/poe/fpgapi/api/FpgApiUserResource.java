@@ -4,6 +4,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 
+import org.h2.util.New;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,16 +61,21 @@ public class FpgApiUserResource {
 	
 	
 	 @RequestMapping(value = "/users/add",method = RequestMethod.GET)
-	 public ResponseEntity add(@RequestParam Long id, @RequestParam String name, @RequestParam Integer age) throws Exception {
+	 public ResponseEntity add( @RequestParam String name, @RequestParam String email, @RequestParam String mDP , @RequestParam String mDPV,@RequestParam String firstName) throws Exception {
 		 
-			User user = new User();
-		 	user.setAge(age);
-			user.setName(name);
-			
-			log.info("REST request to user created : {}", user);
+		 if(!mDP.equals(mDPV))
+			 return new ResponseEntity<ErrorMessage>(new ErrorMessage("Mot de passe different"), HttpStatus.CONFLICT);
+		User user = new User();
+		user.setEmail(email);
+		user.setName(name);
+		user.setMotDePasse(mDP);
+		user.setFirstName(firstName);
 
-			userService.addUser(user);
-			 return new ResponseEntity<User>(user, HttpStatus.OK);
+			
+		log.info("REST request to user created : {}", user.toString());
+
+		userService.addUser(user);
+		return new ResponseEntity<User>(user, HttpStatus.OK);
 		
 	 }
 	
