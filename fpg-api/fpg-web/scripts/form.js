@@ -1,4 +1,3 @@
-
 	//var nom =$('#name').val();
 	//var age =$('#age').val();
     //     url: "http://localhost:8080/api/users", // the method we are
@@ -18,8 +17,8 @@ $(document).ready(function() {
             'firstName':$('#firstName').val(),
             'email'  : $('#email').val(),
             'mDP'  : $('#mDP').val(),
-//            'mDPV'  : $('#mDPV').val()//$('input[name=email]').val()
-//        	localStorage.setItem("idUpdate",0);
+            'codePostal' :$('#codePostal').val()
+
         };
 
         // process the form
@@ -49,7 +48,7 @@ $(document).ready(function() {
 
 function check(input) {
     if (input.value != document.getElementById('mDP').value) {
-        input.setCustomValidity('Password Must be Matching.');
+        input.setCustomValidity('Les mots de passes doivent etre identique');
     } else {
         // input is valid -- reset the error message
         input.setCustomValidity('');

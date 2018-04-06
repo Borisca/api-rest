@@ -5,19 +5,26 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 @Entity
 public class User {
 
 	@NotEmpty(message="Le nom de peut pas etre vide")
+	@NotBlank
     private String name;
 
-	@NotEmpty(message="Le prenom de peut pas etre vide")
+	@NotEmpty(message="{prenom.notnull}")
+	@NotBlank
 	private String firstName;
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
+    
+    @Pattern(regexp="^[0-9]{5}",message="Entrer un code postal valide")
+    private String codePostal;
     
     private String email;
     
@@ -27,7 +34,15 @@ public class User {
     
     
     
-    public String getFirstName() {
+    public String getCodePostal() {
+		return codePostal;
+	}
+
+	public void setCodePostal(String codePostal) {
+		this.codePostal = codePostal;
+	}
+
+	public String getFirstName() {
 		return firstName;
 	}
 

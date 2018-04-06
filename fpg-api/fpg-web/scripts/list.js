@@ -12,6 +12,7 @@ $(document).ready(function() {
     }).then(function(data) {
     	 var tr;
     	
+    	
     	$.each(data, function(i, item) {
     		console.log(item);
     		tr = $('<tr/>');
@@ -20,7 +21,7 @@ $(document).ready(function() {
     		tr.append("<td>" + item.name + "</td>");
     		tr.append("<td>" + item.email + "</td>");
     		tr.append("<td>" + "********" + "</td>");  		
-    		tr.append("<td>"+"<button  id='boutonUpdate' onclick='update( "+item.id+")' value='update' ><img src='ressources/images/icon-edit.png' /></button>"+"<button onclick='remove( "+item.id+")' value='remove' ><img src='ressources/images/icon-delete.png' /></button>"+"</td>");
+    		tr.append("<td>"+"<button  id='boutonUpdateRemove' onclick='update( "+item.id+")' value='update' ><img src='ressources/images/icon-edit.png' /></button>"+"<button id='boutonUpdateRemove' onclick='remove( "+item.id+")' value='remove' ><img src='ressources/images/icon-delete.png' /></button>"+"</td>");
     		$('table').append(tr);
 
         });
@@ -62,5 +63,3 @@ function remove(id){
         // stop the form from submitting the normal way and refreshing the page
 
 }
-
-
