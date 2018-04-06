@@ -4,18 +4,22 @@
     //     url: "http://localhost:8080/api/users", // the method we are
 $(document).ready(function() {
 
+
+	//window.onload = alert(localStorage.getItem("idUpdate"));
     // process the form
     $('form').submit(function(event) {
+    	var id=localStorage.getItem("idUpdate");
 
         // get the form data
         // there are many ways to get this data using jQuery (you can use the class or id also)
         var formData = {
-        	'id' : 0,
+        	'id' : id,
             'name' : $('#name').val(), //$('input[name=name]').val(),
             'firstName':$('#firstName').val(),
             'email'  : $('#email').val(),
             'mDP'  : $('#mDP').val(),
-            'mDPV'  : $('#mDPV').val()//$('input[name=email]').val()
+//            'mDPV'  : $('#mDPV').val()//$('input[name=email]').val()
+//        	localStorage.setItem("idUpdate",0);
         };
 
         // process the form
@@ -32,13 +36,13 @@ $(document).ready(function() {
 
                 // log data to the console so we can see
                 console.log(data); 
-
+                window.location.href='index.html';
                 // here we will handle errors and validation messages
             });
 
         // stop the form from submitting the normal way and refreshing the page
         event.preventDefault();
-
+        
     });
 
 });

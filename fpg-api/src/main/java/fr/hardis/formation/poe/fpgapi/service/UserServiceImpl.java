@@ -34,11 +34,14 @@ public class UserServiceImpl implements UserService {
 		if ( isExist ) {
 			throw new UserExistException("Fuck it exist !");
 		}
-		daoUser.save(user);	
+		daoUser.saveAndFlush(user);	
+
+
 	}
 	
-	public void deleteUser(User user) {
-		daoUser.delete(user);
+	public void deleteUserById(Long id) {
+		daoUser.deleteById(id);
+		daoUser.flush();
 	}
 	
 	public List<User> getListUsers(){
@@ -47,5 +50,9 @@ public class UserServiceImpl implements UserService {
 	
 	public boolean isUserExist(User user) {
 		return daoUser.existsById(user.getId());
+	}
+	
+	public void updateUser(User user) {
+		daoUser.saveAndFlush(user);
 	}
 }

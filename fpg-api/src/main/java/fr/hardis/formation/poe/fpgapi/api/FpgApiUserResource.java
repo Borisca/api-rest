@@ -61,22 +61,41 @@ public class FpgApiUserResource {
 	
 	
 	 @RequestMapping(value = "/users/add",method = RequestMethod.GET)
-	 public ResponseEntity add( @RequestParam String name, @RequestParam String email, @RequestParam String mDP , @RequestParam String mDPV,@RequestParam String firstName) throws Exception {
+	 public ResponseEntity add(@RequestParam Long id, @RequestParam String name, @RequestParam String email, @RequestParam String mDP , @RequestParam String firstName) throws Exception {
 		 
-		 if(!mDP.equals(mDPV))
-			 return new ResponseEntity<ErrorMessage>(new ErrorMessage("Mot de passe different"), HttpStatus.CONFLICT);
-		User user = new User();
+//		 if(!mDP.equals(mDPV))
+//			 return new ResponseEntity<ErrorMessage>(new ErrorMessage("Mot de passe different"), HttpStatus.CONFLICT);
+		User user;
+		if (id!=0) {
+			Optional<User> temp=userService.getUser(id);
+			user=temp.get();
+			log.info("User ecuperer avec update : {}", user.toString());
+		}else
+			user = new User();
+		
 		user.setEmail(email);
 		user.setName(name);
 		user.setMotDePasse(mDP);
 		user.setFirstName(firstName);
 
+		if (id!=0) {
+			userService.updateUser(user);
+			return new ResponseEntity<User>(user, HttpStatus.OK);
+		}
 			
 		log.info("REST request to user created : {}", user.toString());
 
 		userService.addUser(user);
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 		
+	 }
+	 
+	 @RequestMapping(value="/users/remove",method = RequestMethod.GET)
+	 public ResponseEntity<List<User>> remove(@RequestParam Long id){
+		 userService.deleteUserById(id);
+		 List<User> users = userService.getListUsers();
+		 log.info("REST request to user remove: {}", id);
+		 return ResponseEntity.ok().body(users);
 	 }
 	
 //
