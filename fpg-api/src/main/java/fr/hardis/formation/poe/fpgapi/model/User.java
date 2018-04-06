@@ -4,14 +4,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class User {
 
-	@NotEmpty
+	@NotEmpty(message="Le nom de peut pas etre vide")
     private String name;
 
+	@NotEmpty(message="Le prenom de peut pas etre vide")
 	private String firstName;
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -20,7 +22,7 @@ public class User {
     private String email;
     
 
-
+    @Min(value=6,message="le mot de passe doit faire au moins 6 caracteres")
     private String motDePasse;
     
     

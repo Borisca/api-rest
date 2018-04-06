@@ -6,7 +6,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="scripts/form.js"></script>
-<link rel="stylesheet" type="text/css" href="formstyle.css">
+<link rel="stylesheet" type="text/css" href="ressources/css/formstyle.css">
 </head>
 <body>
 	<p class="yo">
@@ -16,8 +16,8 @@
 			Nom: <input name="name" id="name" required/><br> 
 			Prenom: <input name="firstName" id="firstName" /><br> 
 			Email: <input type="email" name="email" id="email" /><br> 
-			Mot De Passe: <input  type="password"  name="mDP" id="mDP" pattern=".{8,}"  title="8 characters minimum" required/><br>
-			Valider mot de passe: <input type="password" name="mDPV" id="mDPV" pattern=".{8,}" oninput="check(this)" title="8 characters minimum" required/><br>
+			Mot De Passe: <input  type="password"  name="mDP" id="mDP" pattern=".{4,}"  title="8 characters minimum" required/><br>
+			Valider mot de passe: <input type="password" name="mDPV" id="mDPV" pattern=".{4,}" oninput="check(this)" title="8 characters minimum" required/><br>
 		</fieldset>
 
 		<button type="submit">Submit</button>

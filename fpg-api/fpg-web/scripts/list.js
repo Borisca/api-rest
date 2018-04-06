@@ -15,11 +15,12 @@ $(document).ready(function() {
     	$.each(data, function(i, item) {
     		console.log(item);
     		tr = $('<tr/>');
-    		tr.append("<td>" + item.id + "</td>");
+//    		tr.append("<td>" + item.id + "</td>");
     		tr.append("<td>" + item.firstName + "</td>");
     		tr.append("<td>" + item.name + "</td>");
     		tr.append("<td>" + item.email + "</td>");
-    		tr.append("<td>"+"<input type='submit' onclick='update( "+item.id+")' value='update' ></input>"+"<input type='submit' onclick='remove( "+item.id+")' value='remove' ></input>"+"</td>");
+    		tr.append("<td>" + "********" + "</td>");  		
+    		tr.append("<td>"+"<button  id='boutonUpdate' onclick='update( "+item.id+")' value='update' ><img src='ressources/images/icon-edit.png' /></button>"+"<button onclick='remove( "+item.id+")' value='remove' ><img src='ressources/images/icon-delete.png' /></button>"+"</td>");
     		$('table').append(tr);
 
         });
