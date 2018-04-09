@@ -50,9 +50,7 @@ function remove(id){
             dataType    : 'jsonp', // what type of data do we expect back from the server
             encode      : true,
             crossDomain: true
-        })
-            // using the done promise callback
-            .done(function(data) {
+        }).done(function(data) {
 
                 // log data to the console so we can see
                 console.log(data); 
